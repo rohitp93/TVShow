@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TVshow</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+</head>
+<body ng-app="app" ng-controller="myCtrl" data-ng-init="init()">
+<div align="center">
+<form ng-submit="searchtv(tv)" >
+    <input type="text" name="style-1" class="style-1" ng-model="tv" />
+    <input type="button" name="btn" class="btn-style" value="submit" />
+</form>
+</div>
+<h2 align="center" style="font-family: sans-serif";>
+    {{ title}}&nbsp;&nbsp;
+<div align="right" style="display: inline-block">
+    <img src="css/imdb.png" style="height: 30px; width: 30px;"/> {{avg}}
+</div>
+</h2>
+<form ng-submit="remove(info)" >
+<table id="tv">
+    <tr align="center">
+        <td> </td>
+        <td> Episode</td>
+        <td width="20%"> Title  </td>
+        <td> Plot </td>
+        <td> Released  </td>
+        <td> Rating  </td>
+        <td> Select </td>
+    </tr>
+    <tr align="center" ng-repeat = "item in info" style = {{myStyle(item.data.imdbRating)}}>
+        <td> <img src= {{item.data.Poster}}></td>
+        <td> {{ item.data.Episode }} </td>
+        <td> {{ item.data.Title }} </td>
+        <td> {{ item.data.Plot }} </td>
+        <td> {{ date2Month(item.data.Released) }} </td>
+        <td> {{ item.data.imdbRating }} </td>
+        <td> <button ng-click="removetv($index)" class="btn-style" /> Remove </td>
+    </tr>
+</table>
+</form>
+</body>
+</html>
